@@ -1,5 +1,4 @@
-# create a flask app which takes info from the form 
-# and returns a json response
+# A flask app which takes info from the form and returns a json response
 
 import numpy as np
 import pandas as pd
@@ -56,7 +55,6 @@ def new_main(user_rating, ai_rating, user_rep_count, level):
     user_rating, ai_rating = new_ELO(user_rating, ai_rating, result)
     return int(user_rating), int(ai_rating)
 
-
 # define the app
 app = Flask(__name__)
 
@@ -75,6 +73,7 @@ def data():
     level = request.form['level']
     
     new_user_rating, new_ai_rating = new_main(user_rating, ai_rating, rep_count, level)
+    
     # make a response dict
     response = {}
     response['Name'] = name

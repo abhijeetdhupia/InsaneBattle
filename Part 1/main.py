@@ -16,7 +16,7 @@ import torch.optim as optim
 np.random.seed(42)
 torch.manual_seed(42)
 
-EPOCHS = 50
+EPOCHS = 250
 LEARNING_RATE = 0.001
 DROPOUT = 0.5
 
@@ -124,4 +124,4 @@ with torch.no_grad():
 
     # Create a dataframe with two columns: `id` and `label`
     submission = pd.DataFrame({'id': test['id'], 'label': predicted})
-    # submission.to_csv("./data/submission.csv", index=False, columns=['id', 'label'], header=True)
+    submission.to_csv("./data/final_pred.csv", index=False, columns=['id', 'label'], header=True)

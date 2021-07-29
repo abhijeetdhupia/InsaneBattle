@@ -81,13 +81,12 @@ users['AI_Rating'] = 0
 
 
 # Q.2 Simulate AI Battles and reach equilibrium ELO Ratings for each user in users
-# for all the users in users calculate EOL Rating of user and update the ratings
+# for all the users in users calculate ELO Rating of user and update the ratings
 # of the user and AI player
 
 user_rating = 1000
 ai_rating = 1000
 for i in range(len(users)):
-    ai_rating = 1000
     # if user_rep_count is less than 35 then he is a beginner 
     # if user_rep_count is greater than 35 and less than 60 then he is an intermediate
     # if user_rep_count is greater than 35 and less than 80 then he is an advanced
@@ -102,7 +101,8 @@ for i in range(len(users)):
     else:
         level = 'elite'
     new_user_rating, new_ai_rating = new_main(user_rating=user_rating,ai_rating=ai_rating, user_rep_count=user_rep_count, level=level)
-    # if any values is negative make them 0 
+    
+    # if any rating goes negative make them 0 
     if new_user_rating < 0:
         new_user_rating = 1000
     if new_ai_rating < 0:
@@ -113,4 +113,4 @@ for i in range(len(users)):
     users.iloc[i,2] = ai_rating
 
 # save the users dataframe to csv file
-users.to_csv('./data/users.csv', sep=',', encoding='utf-8')
+users.to_csv('./data/users.csv', sep=',', encoding='utf-8', index=False)
